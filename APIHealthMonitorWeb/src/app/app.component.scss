@@ -1,0 +1,13 @@
+.navbar {
+    a {
+    box-sizing: border-box;
+    color: #fff;
+        :hover {
+            background-color:rgba($color: #000000, $alpha: 0.07);
+            border-radius: 5px;
+        }
+        span {
+            padding: 1rem;
+        }
+    }
+}

@@ -8,11 +8,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AngularHelpComponent
+    AngularHelpComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

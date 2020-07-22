@@ -5,7 +5,7 @@ import { AppComponent }   from './app.component';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
 
 const routes: Routes = [
-  { path: 'about', component: AngularHelpComponent },
+  { path: 'angular-helper', component: AngularHelpComponent },
   { path: '**', redirectTo: '/'  }
 ];
 

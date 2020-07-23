@@ -35,7 +35,7 @@ namespace APIHealthMonitorApplication.Controllers
             })
             .ToArray();
         }
-
+          
         [HttpGet, Route("GenerateError")]
         public void GenerateError()
         {

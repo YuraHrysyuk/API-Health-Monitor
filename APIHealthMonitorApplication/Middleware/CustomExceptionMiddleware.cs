@@ -31,7 +31,6 @@ namespace APIHealthMonitorApplication.Middleware
                 logger.LogError(exception, "");
                 await ExceptionHandlerMethod(httpContext, exception);
             }
-
         }
 
         private Task ExceptionHandlerMethod(HttpContext context, Exception exception)
@@ -41,5 +40,4 @@ namespace APIHealthMonitorApplication.Middleware
             return context.Response.WriteAsync(exception.Message);
         }
     }
-
 }

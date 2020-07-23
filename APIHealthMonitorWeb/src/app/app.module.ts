@@ -10,6 +10,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
     AppRoutingModule,
     MatToolbarModule,
     MatButtonModule,
+    MatTableModule,
     BrowserAnimationsModule
   ],
   providers: [Title],

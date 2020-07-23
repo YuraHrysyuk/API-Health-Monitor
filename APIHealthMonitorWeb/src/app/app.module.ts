@@ -7,17 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { HomeComponent } from './home/home.component';
-import {MatTableModule} from '@angular/material/table';
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AngularHelpComponent,
-    NavbarComponent,
-    HomeComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +24,8 @@ import {MatTableModule} from '@angular/material/table';
     MatToolbarModule,
     MatButtonModule,
     MatTableModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HomeModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

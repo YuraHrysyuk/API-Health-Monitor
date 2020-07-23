@@ -5,15 +5,16 @@ import { Data } from '@angular/router';
 
 export interface DataElement {
   name: string;
+  createdOn: string;
   comments: string;
 }
 
 const DATA_ARRAY: DataElement[] = [
-  {name: 'Jhon', comments: 'Some comment 1'},
-  {name: 'Bob', comments: 'Some comment 2'},
-  {name: 'Kate', comments: 'Some comment 3'},
-  {name: 'Alice', comments: 'Some comment 4'},
-  {name: 'Piter', comments: 'Some comment 5'}
+  {name: 'Jhon', createdOn: '07/23/2020', comments: 'Some comment 1'},
+  {name: 'Bob', createdOn: '07/23/2020', comments: 'Some comment 2'},
+  {name: 'Kate', createdOn: '07/23/2020', comments: 'Some comment 3'},
+  {name: 'Alice', createdOn: '07/23/2020', comments: 'Some comment 4'},
+  {name: 'Piter', createdOn: '07/23/2020', comments: 'Some comment 5'}
 ];
 
 @Component({
@@ -32,13 +33,4 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle(this.componentTitle);
   }
-
-  getDate() {
-    const options = {hour: '2-digit', minute: '2-digit', year: 'numeric', month: 'short', day: 'numeric'};
-    const s = new Date(2020, 1, 1).getTime();
-    const f = new Date().getTime();
-    const date = new Date(s + Math.random() * (f - s));
-    return `${date.toLocaleDateString('ru-RU', options)}`;
-  }
-
 }

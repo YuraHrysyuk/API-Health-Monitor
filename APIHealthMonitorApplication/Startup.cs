@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIHealthMonitorApplication.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -36,7 +37,9 @@ namespace APIHealthMonitorApplication
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            app.UseMiddleware<CustomExceptionMiddleware>();//This middleware was added for Custom global exception handling. Technically, we can add here many custom handlers.
+
+            //app.UseHttpsRedirection(); //Uncomment this for https requests enabling
 
             app.UseRouting();
 

@@ -24,7 +24,6 @@ namespace APIHealthMonitorApplication
                     var path = Directory.GetCurrentDirectory();
 
                     logging.ClearProviders();
-                    //logging.AddConsole(); //Uncomment this for all types of console logging.
                     logging.AddFile($"{path}\\Logs\\Log.txt", LogLevel.Error);
 
                 })

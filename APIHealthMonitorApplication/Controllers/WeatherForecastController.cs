@@ -35,11 +35,5 @@ namespace APIHealthMonitorApplication.Controllers
             })
             .ToArray();
         }
-          
-        [HttpGet, Route("GenerateError")]
-        public void GenerateError()
-        {
-            throw new Exception("Manually generated exception in WeatherForecast Controller");
-        }
     }
 }

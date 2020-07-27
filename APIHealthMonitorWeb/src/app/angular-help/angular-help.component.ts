@@ -8,7 +8,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./angular-help.component.scss']
 })
 export class AngularHelpComponent implements OnInit {
-  componentTitle: string = 'Angular Helper';
+  componentTitle = 'Angular Helper';
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@ export class GridToolbarComponent implements OnInit {
   }
 
   toggleDrawer() {
-    this.navToggle.emit(true);
+    this.navToggle.emit();
   }
 
 }

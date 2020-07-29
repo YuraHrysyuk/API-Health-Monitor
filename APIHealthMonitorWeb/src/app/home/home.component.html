@@ -1,1 +1,9 @@
-<app-sidebar></app-sidebar>
+<mat-drawer-container>
+    <mat-drawer #drawer>
+        <span>Side content will be here</span>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-grid-toolbar (togglingDrawer) = "drawer.toggle()"></app-grid-toolbar>
+        <app-table></app-table>
+    </mat-drawer-content>
+</mat-drawer-container>

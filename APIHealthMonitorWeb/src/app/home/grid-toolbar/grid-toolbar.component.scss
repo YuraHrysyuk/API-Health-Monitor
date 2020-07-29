@@ -1,0 +1,16 @@
+:host {
+    width: 100%;
+    display: flex;
+}
+.grid-toolbar {
+    width: 100%;
+    mat-toolbar {
+        justify-content: center;
+    }
+    a {
+      color: #fff;
+    }
+}
+.example-spacer {
+    flex: 1 1 auto;
+  }

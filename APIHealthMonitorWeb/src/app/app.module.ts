@@ -5,29 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// import {MatToolbarModule} from '@angular/material/toolbar';
-// import {MatButtonModule} from '@angular/material/button';
-// import {MatTableModule} from '@angular/material/table';
-// import { AngularHelpComponent } from './angular-help/angular-help.component';
-// import { NavbarComponent } from './navbar/navbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatTableModule} from '@angular/material/table';
 import { HomeModule } from './home/home.module';
-// import { SidebarComponent } from './sidebar/sidebar.component';
-import {MatIconModule} from '@angular/material/icon';
-// import {MatSidenavModule} from '@angular/material/sidenav';
-import { SharedModule } from './shared/shared.module';
 
-
+import { NavbarComponent } from './navbar/navbar.component';
+import { AngularHelpComponent } from './angular-help/angular-help.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AngularHelpComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatTableModule,
     BrowserAnimationsModule,
-    HomeModule,
-    SharedModule
+    HomeModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

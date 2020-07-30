@@ -1,3 +1,4 @@
+import { MatInputModule } from '@angular/material/input';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -8,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { HomeModule } from './home/home.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,7 +30,11 @@ import { AngularHelpComponent } from './angular-help/angular-help.component';
     MatButtonModule,
     MatTableModule,
     BrowserAnimationsModule,
-    HomeModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    HomeModule,
+    ReactiveFormsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

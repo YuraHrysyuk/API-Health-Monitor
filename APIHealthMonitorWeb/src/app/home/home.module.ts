@@ -6,19 +6,27 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 import { TableComponent } from './table/table.component';
 import { HomeComponent } from './home.component';
 import { GridToolbarComponent } from './grid-toolbar/grid-toolbar.component';
+import { SideBarFormComponent } from './side-bar-form/side-bar-form.component';
+
 @NgModule({
-  declarations: [HomeComponent, TableComponent, GridToolbarComponent],
+  declarations: [HomeComponent, TableComponent, GridToolbarComponent, SideBarFormComponent],
   imports: [
     CommonModule,
     MatTableModule,
     MatButtonModule,
-    MatIconModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatIconModule
   ]
 })
 export class HomeModule { }

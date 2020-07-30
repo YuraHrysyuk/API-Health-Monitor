@@ -13,7 +13,16 @@ mat-drawer-container {
     mat-drawer {
         background-color: #fff;
         width: 350px;
-        padding: 2rem;
+        padding: 1rem;
+        .drawerHearder {
+            padding: 5px;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            text-align: center;
+            text-transform: uppercase;
+            color: #3f50b6;
+        }
     }
     mat-drawer-content {
         display: flex;

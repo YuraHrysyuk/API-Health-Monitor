@@ -1,8 +1,19 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <ng-container [matColumnDef]="column" *ngFor="let column of tableColumns; index as i">
+    
+    <ng-container [matColumnDef]="column" *ngFor="let column of tableColumns.slice(0, -1); index as i">
         <mat-header-cell *matHeaderCellDef>{{headers[i]}}</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell>
     </ng-container>
+
+    <ng-container [matColumnDef]="'arrow'">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <span class="material-icons">
+            arrow_forward_ios
+            </span>
+        </mat-cell>
+    </ng-container>
+
     <mat-header-row *matHeaderRowDef="tableColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: tableColumns;"></mat-row>
+    <mat-row *matRowDef="let row; columns: tableColumns;" (click)="redirect()"></mat-row>
 </mat-table>

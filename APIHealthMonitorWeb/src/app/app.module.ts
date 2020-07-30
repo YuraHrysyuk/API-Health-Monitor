@@ -16,12 +16,14 @@ import { HomeModule } from './home/home.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
+import { EndpointComponent } from './endpoint/endpoint.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AngularHelpComponent,
-    NavbarComponent
+    NavbarComponent,
+    EndpointComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,11 @@
     mat-form-field {
         width: 100%;
     }
+}
+.formBtn {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
     button {
         padding: 0 3rem;
     }

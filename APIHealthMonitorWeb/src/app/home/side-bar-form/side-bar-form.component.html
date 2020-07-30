@@ -2,7 +2,7 @@
     (ngSubmit)='onSubmit(sideBarFormGroup, formDirective)'>
     <div class="formInputsBlock">
         <mat-form-field appearance="outline">
-            <mat-label>Your Name</mat-label>
+            <mat-label>Name</mat-label>
             <input type="text" matInput formControlName="name" required>
             <mat-error *ngIf="sideBarFormGroup.controls.name.touched && sideBarFormGroup.controls.name.invalid">
                 <span *ngIf="sideBarFormGroup.controls.name.hasError('required')">Require error</span>
@@ -10,9 +10,11 @@
             </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
-            <mat-label>Your Scenario Comment</mat-label>
+            <mat-label>Comments</mat-label>
             <textarea formControlName="comment" matInput rows="5"></textarea>
         </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!sideBarFormGroup.valid">ADD</button>
+    <div class="formBtn">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!sideBarFormGroup.valid">ADD</button>
+    </div>
 </form>

@@ -1,5 +1,5 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, FormGroupDirective, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-side-bar-form',
@@ -9,20 +9,19 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class SideBarFormComponent implements OnInit {
   sideBarFormGroup: FormGroup;
 
-  @Output() addData = new EventEmitter();
-
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.sideBarFormGroup = this.fb.group({
-      name: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       comment: ['']
     });
   }
 
-  onSubmit() {
+  onSubmit(form: any, formDirective: FormGroupDirective) {
     console.log(this.sideBarFormGroup.value);
-    this.addData.emit();
+    formDirective.resetForm();
+    this.sideBarFormGroup.reset();
   }
 
 }

@@ -31,10 +31,10 @@ import { AngularHelpComponent } from './angular-help/angular-help.component';
     MatTableModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
     MatIconModule,
     MatInputModule,
-    HomeModule
+    HomeModule,
+    ReactiveFormsModule
   ],
   providers: [Title],
   bootstrap: [AppComponent]

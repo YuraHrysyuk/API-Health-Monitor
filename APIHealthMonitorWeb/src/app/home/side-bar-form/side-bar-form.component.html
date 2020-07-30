@@ -1,0 +1,11 @@
+<form [formGroup]="sideBarFormGroup" class="sideBarForm" (ngSubmit)='onSubmit()'>
+    <div class="formInputsBlock"><mat-form-field appearance="outline">
+    <mat-label>Your Name</mat-label>
+    <input formControlName="name" type="text" matInput required>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+    <mat-label>Your Scenario Comment</mat-label>
+    <textarea formControlName="comment" matInput rows="5"></textarea>
+    </mat-form-field></div>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!sideBarFormGroup.valid">ADD</button>
+</form>

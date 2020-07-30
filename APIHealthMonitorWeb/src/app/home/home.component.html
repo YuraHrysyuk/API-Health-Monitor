@@ -1,6 +1,7 @@
 <mat-drawer-container>
     <mat-drawer #drawer>
-        <span>Side content will be here</span>
+        <h3>Adding scenario</h3>
+            <app-side-bar-form></app-side-bar-form>
     </mat-drawer>
     <mat-drawer-content>
         <app-grid-toolbar (navToggle)="drawer.toggle()"></app-grid-toolbar>

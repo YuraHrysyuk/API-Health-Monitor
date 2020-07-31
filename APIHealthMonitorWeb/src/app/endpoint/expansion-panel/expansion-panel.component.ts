@@ -21,12 +21,10 @@ const SCENARIO_DATA: ScenarioData[] = [
 })
 export class ExpansionPanelComponent implements OnInit {
   panelOpenState = false;
-
   scenarios = SCENARIO_DATA;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

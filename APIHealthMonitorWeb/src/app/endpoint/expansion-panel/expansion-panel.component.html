@@ -1,0 +1,13 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let panel of scenarios" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{panel.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{panel.description}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>Created On: {{panel.date}}</p>
+    </mat-expansion-panel>
+</mat-accordion>

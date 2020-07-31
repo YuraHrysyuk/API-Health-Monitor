@@ -13,17 +13,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { HomeModule } from './home/home.module';
+import { EndpointModule } from './endpoint/endpoint.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
-import { EndpointComponent } from './endpoint/endpoint.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AngularHelpComponent,
-    NavbarComponent,
-    EndpointComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +35,7 @@ import { EndpointComponent } from './endpoint/endpoint.component';
     MatIconModule,
     MatInputModule,
     HomeModule,
+    EndpointModule,
     ReactiveFormsModule
   ],
   providers: [Title],

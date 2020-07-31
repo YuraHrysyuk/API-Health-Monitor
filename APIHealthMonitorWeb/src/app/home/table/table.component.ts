@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 export interface DataElement {
   name: string;
@@ -20,12 +21,16 @@ const DATA_ARRAY: DataElement[] = [
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  tableColumns: string[] = ['name', 'createdOn', 'comments'];
+  tableColumns: string[] = ['name', 'createdOn', 'comments', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
   dataSource = DATA_ARRAY;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  redirect(){
+    this.router.navigate(['end-points']);
   }
 
 }

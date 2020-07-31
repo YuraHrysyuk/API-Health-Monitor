@@ -17,3 +17,20 @@ mat-table {
         justify-content: center;
     }
   }
+
+  .mat-column-arrow {
+    max-width: 80px;
+  }
+  mat-row{
+      .mat-column-arrow {
+        visibility: hidden;
+      }
+  }
+
+  mat-row:hover{
+      cursor: pointer;
+    background-color: rgba(211, 244, 255, 0.25);
+    & .mat-column-arrow {
+        visibility: visible;
+    }
+  }

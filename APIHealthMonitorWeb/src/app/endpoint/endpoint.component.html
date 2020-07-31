@@ -1,1 +1,12 @@
-<app-expansion-panel></app-expansion-panel>
+<mat-drawer-container>
+    <mat-drawer #panelDrawer [opened]="true">
+        <div class="drawerHearder">
+            <span>Endpoint:</span>
+        </div>
+        <app-endpoint-form></app-endpoint-form>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-panel-toolbar (drawerToggleEvent)="panelDrawer.toggle()"></app-panel-toolbar>
+        <app-expansion-panel></app-expansion-panel>
+    </mat-drawer-content>
+</mat-drawer-container>

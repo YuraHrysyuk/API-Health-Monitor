@@ -1,0 +1,20 @@
+<form [formGroup]="formGroup" #formDirective="ngForm" class="endpointForm"
+    (ngSubmit)='onSubmit(formGroup, formDirective)'>
+    <div class="formInputsBlock">
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Connection Path</mat-label>
+            <textarea formControlName="connectionPath" matInput rows="5"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Comments</mat-label>
+            <textarea formControlName="comments" matInput rows="5"></textarea>
+        </mat-form-field>
+    </div>
+    <div class="formBtn">
+        <button mat-raised-button color="primary" type="submit">ADD</button>
+    </div>
+</form>

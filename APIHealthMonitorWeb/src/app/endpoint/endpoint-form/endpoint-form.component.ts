@@ -24,5 +24,4 @@ export class EndpointFormComponent implements OnInit {
     formDirective.resetForm();
     this.formGroup.reset();
   }
-
 }

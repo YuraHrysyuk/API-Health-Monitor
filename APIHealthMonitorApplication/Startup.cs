@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using APIHealthMonitorApplication.EntityScenario.DataAccess.Contexts;
 using APIHealthMonitorApplication.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using APIHealthMonitorApplication.BussinesLogic;
+
 
 namespace APIHealthMonitorApplication
 {
@@ -27,6 +31,16 @@ namespace APIHealthMonitorApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddMemoryCache();
+
+            services.AddDbContext<EntityScenarioDbContext>((serviceProvider, options) =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("EntityScenarioDatabase"));
+                options.EnableSensitiveDataLogging(true);
+                options.EnableServiceProviderCaching(true);
+            });
+
+            services.AddScoped<BussinesLogicService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

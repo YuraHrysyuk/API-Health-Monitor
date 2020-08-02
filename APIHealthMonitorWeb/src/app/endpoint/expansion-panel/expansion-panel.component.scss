@@ -6,3 +6,19 @@ mat-accordion {
     display: block;
     padding:0 25px 25px 25px;
 }
+.panelContentBlock {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+}
+.panelProgressBar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.hidden {
+    visibility: hidden;
+}

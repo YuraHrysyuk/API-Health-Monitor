@@ -8,6 +8,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { EndpointComponent } from './endpoint.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
@@ -26,6 +27,7 @@ import { EndpointFormComponent } from './endpoint-form/endpoint-form.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormsModule,
+    MatProgressBarModule,
     MatInputModule
   ]
 })

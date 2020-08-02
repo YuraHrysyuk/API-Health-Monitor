@@ -22,9 +22,18 @@ const SCENARIO_DATA: ScenarioData[] = [
 export class ExpansionPanelComponent implements OnInit {
   panelOpenState = false;
   scenarios = SCENARIO_DATA;
+  connection = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  runTest(index: number) {
+    const el = document.querySelectorAll('.panelProgressBar')[index];
+    if (el.classList.contains('hidden')) {
+      el.classList.remove('hidden');
+    }
+    setTimeout(() => el.classList.add('hidden'), 4000);
   }
 }

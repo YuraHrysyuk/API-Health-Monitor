@@ -8,6 +8,15 @@
             <mat-panel-description>
                 {{panel.description}}
             </mat-panel-description>
+            <div class="buttonsPanel" (click)="$event.stopPropagation()">
+                <span>Is Enabled:&nbsp;</span><mat-slide-toggle></mat-slide-toggle>
+                <button mat-icon-button aria-label="Edit button">
+                    <mat-icon matTooltip="Edit">create</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete button">
+                    <mat-icon matTooltip="Delete">delete_forever</mat-icon>
+                </button>
+            </div>
         </mat-expansion-panel-header>
         <div class="panelContentBlock">
             <span>Created On: {{panel.date}}</span>

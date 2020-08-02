@@ -6,6 +6,18 @@ mat-accordion {
     display: block;
     padding:0 25px 25px 25px;
 }
+mat-panel-title {
+    align-items: center;
+}
+mat-panel-description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.buttonsPanel {
+    display: flex;
+    align-items: center;
+}
 .panelContentBlock {
     position: relative;
     display: flex;

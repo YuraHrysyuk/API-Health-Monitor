@@ -17,6 +17,7 @@ import { EndpointComponent } from './endpoint.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { PanelToolbarComponent } from './panel-toolbar/panel-toolbar.component';
 import { EndpointFormComponent } from './endpoint-form/endpoint-form.component';
+import { ScenariosService } from './scenarios.service';
 
 @NgModule({
   declarations: [EndpointComponent, ExpansionPanelComponent, PanelToolbarComponent, EndpointFormComponent],
@@ -35,6 +36,7 @@ import { EndpointFormComponent } from './endpoint-form/endpoint-form.component';
     MatTooltipModule,
     MatDividerModule,
     MatInputModule
-  ]
+  ],
+  providers: [ScenariosService]
 })
 export class EndpointModule { }

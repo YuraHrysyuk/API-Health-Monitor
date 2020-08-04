@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ScenariosService } from './../scenarios.service';
+import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
+import { ScenarioData } from '../scenario';
 
 @Component({
   selector: 'app-endpoint-form',
@@ -8,8 +10,15 @@ import { Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular
 })
 export class EndpointFormComponent implements OnInit {
   formGroup: FormGroup;
+  @Input() scenario: ScenarioData;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private scenariosService: ScenariosService, private fb: FormBuilder) {
+    // this.scenariosService.updateSelected.subscribe(
+    //   () => {
+    //     this.scenario = this.scenariosService.selectedScenario;
+    //   }
+    // );
+  }
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({

@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-panel-toolbar',
@@ -7,7 +8,6 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class PanelToolbarComponent implements OnInit {
   @Output() drawerToggleEvent = new EventEmitter<boolean>();
-
   constructor() { }
 
   ngOnInit(): void {

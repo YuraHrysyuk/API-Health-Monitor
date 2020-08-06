@@ -1,9 +1,13 @@
+<div class="formTitle">
+    <span *ngIf="scenario; else editTitle">Edit Endpoint:</span>
+    <ng-template #editTitle>New end-point:</ng-template>
+</div>
 <form [formGroup]="formGroup" #formDirective="ngForm" class="endpointForm"
     (ngSubmit)='onSubmit(formGroup, formDirective)'>
     <div class="formInputsBlock">
         <mat-form-field appearance="fill">
             <mat-label>Name</mat-label>
-            <input matInput formControlName="name">
+            <input matInput formControlName="name" [value]="scenario ? scenario.name : null">   
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Connection Path</mat-label>
@@ -11,7 +15,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Comments</mat-label>
-            <textarea formControlName="comments" matInput rows="5"></textarea>
+            <textarea formControlName="comments" matInput rows="5" ngModel="{{scenario ? scenario.description : null}}"></textarea>
         </mat-form-field>
     </div>
     <div class="formBtn">

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
+import { ScenarioData } from '../scenario';
 
 @Component({
   selector: 'app-endpoint-form',
@@ -8,8 +9,9 @@ import { Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular
 })
 export class EndpointFormComponent implements OnInit {
   formGroup: FormGroup;
+  @Input() scenario: ScenarioData;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.formGroup = this.fb.group({

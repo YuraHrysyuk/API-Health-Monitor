@@ -25,7 +25,6 @@ export class TableComponent implements OnInit {
   @Output() editClick = new EventEmitter<boolean>();
 
   selectedScenario: ScenarioData;
-
   tableColumns: string[] = ['name', 'date', 'description', 'controlBar', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
   dataSource = SCENARIO_DATA;
@@ -35,10 +34,8 @@ export class TableComponent implements OnInit {
   }
 
   getScenario(index: number) {
-    console.log(index);
     this.selectedScenario = SCENARIO_DATA.find(el => el.id === index);
     console.log(this.selectedScenario);
-    
     this.editClick.emit();
   }
 

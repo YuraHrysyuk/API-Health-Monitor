@@ -1,4 +1,3 @@
-import { ScenariosService } from './../scenarios.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SCENARIO_DATA, ScenarioData } from '../scenario';
 
@@ -14,7 +13,7 @@ export class ExpansionPanelComponent implements OnInit {
   selectedScenario: ScenarioData;
   panelOpenState = false;
 
-  constructor(private scenariosService: ScenariosService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
@@ -29,7 +28,6 @@ export class ExpansionPanelComponent implements OnInit {
 
   getScenario(scenario: ScenarioData) {
     this.selectedScenario = scenario;
-    this.scenariosService.findScenario(scenario.id);
     this.editClick.emit();
   }
 }

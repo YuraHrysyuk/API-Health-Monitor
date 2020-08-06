@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { ScenarioData, SCENARIO_DATA } from 'src/app/endpoint/scenario';
 
-export interface DataElement {
-  name: string;
-  createdOn: string;
-  comments: string;
-}
+// export interface DataElement {
+//   name: string;
+//   createdOn: string;
+//   comments: string;
+// }
 
-const DATA_ARRAY: DataElement[] = [
-  {name: 'Jhon', createdOn: '07/23/2020', comments: 'Some comment 1'},
-  {name: 'Bob', createdOn: '07/23/2020', comments: 'Some comment 2'},
-  {name: 'Kate', createdOn: '07/23/2020', comments: 'Some comment 3'},
-  {name: 'Alice', createdOn: '07/23/2020', comments: 'Some comment 4'},
-  {name: 'Piter', createdOn: '07/23/2020', comments: 'Some comment 5'}
-];
+// const DATA_ARRAY: DataElement[] = [
+//   {name: 'Jhon', createdOn: '07/23/2020', comments: 'Some comment 1'},
+//   {name: 'Bob', createdOn: '07/23/2020', comments: 'Some comment 2'},
+//   {name: 'Kate', createdOn: '07/23/2020', comments: 'Some comment 3'},
+//   {name: 'Alice', createdOn: '07/23/2020', comments: 'Some comment 4'},
+//   {name: 'Piter', createdOn: '07/23/2020', comments: 'Some comment 5'}
+// ];
 
 @Component({
   selector: 'app-table',
@@ -21,12 +22,24 @@ const DATA_ARRAY: DataElement[] = [
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  tableColumns: string[] = ['name', 'createdOn', 'comments', 'arrow'];
+  @Output() editClick = new EventEmitter<boolean>();
+
+  selectedScenario: ScenarioData;
+
+  tableColumns: string[] = ['name', 'date', 'description', 'controlBar', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
-  dataSource = DATA_ARRAY;
+  dataSource = SCENARIO_DATA;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  getScenario(index: number) {
+    console.log(index);
+    this.selectedScenario = SCENARIO_DATA.find(el => el.id === index);
+    console.log(this.selectedScenario);
+    
+    this.editClick.emit();
   }
 
   redirect(){

@@ -3,15 +3,15 @@
     <div class="formInputsBlock">
         <mat-form-field appearance="outline">
             <mat-label>Name</mat-label>
-            <input type="text" matInput formControlName="name" required>
-            <mat-error *ngIf="sideBarFormGroup.controls.name.touched && sideBarFormGroup.controls.name.invalid">
+            <input type="text" matInput formControlName="name" [value]="scenario ? scenario.name : null" required>
+            <mat-error *ngIf="sideBarFormGroup.controls.name.dirty && sideBarFormGroup.controls.name.invalid">
                 <span *ngIf="sideBarFormGroup.controls.name.hasError('required')">Require error</span>
                 <span *ngIf="sideBarFormGroup.controls.name.hasError('pattern')">Pattern error</span>
             </mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Comments</mat-label>
-            <textarea formControlName="comment" matInput rows="5"></textarea>
+            <textarea formControlName="comment" matInput rows="5" ngModel="{{scenario ? scenario.description : null}}"></textarea>
         </mat-form-field>
     </div>
     <div class="formBtn">

@@ -1,8 +1,23 @@
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
-    <ng-container [matColumnDef]="column" *ngFor="let column of tableColumns.slice(0, -1); index as i">
+    <ng-container [matColumnDef]="column" *ngFor="let column of tableColumns.slice(0, -2); index as i">
         <mat-header-cell *matHeaderCellDef>{{headers[i]}}</mat-header-cell>
         <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell>
+    </ng-container>
+
+    <ng-container [matColumnDef]="'controlBar'">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+            <div class="buttonsPanel" (click)="$event.stopPropagation()">
+                <span>Is Enabled:&nbsp;</span><mat-slide-toggle checked="true"></mat-slide-toggle>
+                <button mat-icon-button aria-label="Edit button" (click)="getScenario(row.id)">
+                    <mat-icon matTooltip="Edit" color="primary">create</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete button">
+                    <mat-icon matTooltip="Delete" color="warn">delete_forever</mat-icon>
+                </button>
+            </div>
+        </mat-cell>
     </ng-container>
 
     <ng-container [matColumnDef]="'arrow'">

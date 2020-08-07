@@ -19,4 +19,10 @@
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\EFCoreTestProjects\BussinesEntity\BussinesEntity\BussinesEntity.csproj" />
+    <ProjectReference Include="..\..\..\EFCoreTestProjects\BussinesServices\BussinesServices\BussinesServices.csproj" />
+    <ProjectReference Include="..\..\..\EFCoreTestProjects\DataAccess\DataAccess\DataAccess.csproj" />
+  </ItemGroup>
+
 </Project>

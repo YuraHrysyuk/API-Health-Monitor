@@ -1,13 +1,29 @@
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let panel of scenarios" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel *ngFor="let scenario of scenarios; index as i" (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                {{panel.name}}
+                {{scenario.name}}
             </mat-panel-title>
             <mat-panel-description>
-                {{panel.description}}
+                {{scenario.description}}
             </mat-panel-description>
+            <div class="buttonsPanel" (click)="$event.stopPropagation()">
+                <span>Is Enabled:&nbsp;</span><mat-slide-toggle checked="true"></mat-slide-toggle>
+                <button mat-icon-button aria-label="Edit button" (click)="getScenario(scenario)">
+                    <mat-icon matTooltip="Edit" color="primary">create</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Delete button">
+                    <mat-icon matTooltip="Delete" color="warn">delete_forever</mat-icon>
+                </button>
+            </div>
         </mat-expansion-panel-header>
-        <p>Created On: {{panel.date}}</p>
+        <div class="panelContentBlock">
+            <span>Created On: {{scenario.date}}</span>
+            <button mat-raised-button color="primary" (click)="runTest(i)">Test Connection</button>
+        </div>
+        <div class="panelProgressBar hidden">
+            <mat-progress-bar mode="indeterminate" value="40"></mat-progress-bar>
+        </div>
     </mat-expansion-panel>
 </mat-accordion>

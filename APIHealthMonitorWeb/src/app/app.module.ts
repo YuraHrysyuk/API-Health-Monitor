@@ -17,6 +17,7 @@ import { EndpointModule } from './endpoint/endpoint.module';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
+import { EndpointDataService } from './endpoint/endpoint-data.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { AngularHelpComponent } from './angular-help/angular-help.component';
     EndpointModule,
     ReactiveFormsModule
   ],
-  providers: [Title],
+  providers: [Title, EndpointDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

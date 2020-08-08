@@ -1,6 +1,7 @@
+import { EndpointDataService } from './../../endpoint/endpoint-data.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { ScenarioData, SCENARIO_DATA } from 'src/app/endpoint/scenario';
+import { ScenarioData } from 'src/app/endpoint/scenario';
 
 // export interface DataElement {
 //   name: string;
@@ -27,14 +28,16 @@ export class TableComponent implements OnInit {
   selectedScenario: ScenarioData;
   tableColumns: string[] = ['name', 'date', 'description', 'controlBar', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
-  dataSource = SCENARIO_DATA;
-  constructor(private router: Router) { }
+  dataSource: ScenarioData[];
+  constructor(private router: Router, private data: EndpointDataService) { }
 
   ngOnInit(): void {
+    this.dataSource = this.data.getData();
   }
 
   getScenario(index: number) {
-    this.selectedScenario = SCENARIO_DATA.find(el => el.id === index);
+    this.data.findScenario(index);
+    this.selectedScenario = this.data.getSelected();
     console.log(this.selectedScenario);
     this.editClick.emit();
   }

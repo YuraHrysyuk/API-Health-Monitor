@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace APIHealthMonitorApplication.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class ScenarioController : Controller
     {
         [HttpGet]

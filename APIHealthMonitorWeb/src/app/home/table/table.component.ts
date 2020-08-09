@@ -26,19 +26,17 @@ export class TableComponent implements OnInit {
   @Output() editClick = new EventEmitter<boolean>();
 
   selectedScenario: ScenarioData;
-  tableColumns: string[] = ['name', 'date', 'description', 'controlBar', 'arrow'];
+  tableColumns: string[] = ['name', 'createdOn', 'description', 'controlBar', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
   dataSource: ScenarioData[];
   constructor(private router: Router, private data: EndpointDataService) { }
 
   ngOnInit(): void {
-    this.dataSource = this.data.getData();
+    this.data.getScenarios().subscribe(result => this.dataSource = result as ScenarioData[]);
   }
 
   getScenario(index: number) {
-    this.data.findScenario(index);
-    this.selectedScenario = this.data.getSelected();
-    console.log(this.selectedScenario);
+    this.selectedScenario = this.dataSource.find(x => x.id === index);
     this.editClick.emit();
   }
 

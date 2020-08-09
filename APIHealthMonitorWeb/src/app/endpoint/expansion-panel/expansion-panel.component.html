@@ -19,7 +19,7 @@
             </div>
         </mat-expansion-panel-header>
         <div class="panelContentBlock">
-            <span>Created On: {{scenario.date}}</span>
+            <span>Created On: {{scenario.createdOn | date}}</span>
             <button mat-raised-button color="primary" (click)="runTest(i)">Test Connection</button>
         </div>
         <div class="panelProgressBar hidden">

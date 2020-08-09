@@ -6,6 +6,8 @@ namespace APIHealthMonitorApplication
     {
         public int Id { get; set; }
 
+        public int ScenarioId { get; set; }
+
         public string Name { get; set; }
 
         public string ConnectionPath { get; set; }

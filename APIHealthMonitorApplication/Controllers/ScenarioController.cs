@@ -25,17 +25,7 @@ namespace APIHealthMonitorApplication.Controllers
                     Id = 3,
                     Name = "Third Test Group",
                     Description = "Some Long Description Here 3"
-                },
-                new Scenario() {
-                    Id = 4,
-                    Name = "Forth Test Group",
-                    Description = "Some Long Description Here 4"
-                },
-                new Scenario() {
-                    Id = 5,
-                    Name = "Fifth Test Group",
-                    Description = "Some Long Description Here 5"
-                },
+                }
             };
         }
     }

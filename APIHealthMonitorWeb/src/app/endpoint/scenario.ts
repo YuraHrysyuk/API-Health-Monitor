@@ -2,7 +2,7 @@ export interface ScenarioData {
     id?: number;
     name: string;
     description: string;
-    date?: string;
+    createdOn?: string;
 }
 
 // export const SCENARIO_DATA: ScenarioData[] = [

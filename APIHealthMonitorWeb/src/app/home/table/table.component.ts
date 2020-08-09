@@ -32,7 +32,7 @@ export class TableComponent implements OnInit {
   constructor(private router: Router, private data: EndpointDataService) { }
 
   ngOnInit(): void {
-    this.data.getData().subscribe(result => this.dataSource = result as ScenarioData[]);
+    this.data.getScenarios().subscribe(result => this.dataSource = result as ScenarioData[]);
   }
 
   getScenario(index: number) {

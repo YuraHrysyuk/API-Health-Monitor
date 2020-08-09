@@ -2,7 +2,6 @@
 
     <ng-container [matColumnDef]="column" *ngFor="let column of tableColumns.slice(0, -2); index as i">
         <mat-header-cell *matHeaderCellDef>{{headers[i]}}</mat-header-cell>
-        <!-- <mat-cell *matCellDef="let element">{{element[column]}}</mat-cell> -->
         <mat-cell *matCellDef="let element">{{(column === "createdOn") ? (element[column] | date) : element[column]}}</mat-cell>
     </ng-container>
 

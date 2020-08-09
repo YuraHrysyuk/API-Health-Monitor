@@ -20,7 +20,7 @@ export class ExpansionPanelComponent implements OnInit {
   constructor(public dialog: MatDialog, private data: EndpointDataService) { }
 
   ngOnInit(): void {
-    this.data.getData().subscribe(result => this.scenarios = result as ScenarioData[]);
+    this.data.getScenarios().subscribe(result => this.scenarios = result as ScenarioData[]);
   }
 
   openDialog(id: number) {
@@ -28,7 +28,6 @@ export class ExpansionPanelComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       if (result === true) {
-        this.data.deleteScenario(id);
         console.log('deleted');
       }
     });

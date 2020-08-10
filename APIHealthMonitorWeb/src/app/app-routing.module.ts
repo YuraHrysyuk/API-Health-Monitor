@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'home', component: HomeComponent},
   { path: 'angular-helper', component: AngularHelpComponent },
-  {path: 'end-points', component: EndpointComponent},
+  {path: 'end-points/:id', component: EndpointComponent},
   { path: '**', redirectTo: '/home'  }
 ];
 

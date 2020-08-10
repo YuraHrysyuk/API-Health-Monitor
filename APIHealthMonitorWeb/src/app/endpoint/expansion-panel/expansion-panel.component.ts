@@ -3,6 +3,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ScenarioData } from '../scenario';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
+import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-expansion-panel',
@@ -14,13 +16,16 @@ export class ExpansionPanelComponent implements OnInit {
   @Output() deleteClick = new EventEmitter<string>();
 
   scenarios: ScenarioData[];
+  scenarioId: number;
   selectedScenario: ScenarioData;
   panelOpenState = false;
-
-  constructor(public dialog: MatDialog, private data: EndpointDataService) { }
+  private subscription: Subscription;
+  constructor(public dialog: MatDialog, private data: EndpointDataService, private activateRoute: ActivatedRoute) {
+    this.subscription = activateRoute.params.subscribe(params => this.scenarioId = params.id);
+   }
 
   ngOnInit(): void {
-    this.data.getScenarios().subscribe(result => this.scenarios = result as ScenarioData[]);
+    this.data.getEndPoint(this.scenarioId).subscribe(result => this.scenarios = result as ScenarioData[]);
   }
 
   openDialog(id: number) {

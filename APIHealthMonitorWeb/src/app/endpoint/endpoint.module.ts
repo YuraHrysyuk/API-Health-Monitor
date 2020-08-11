@@ -13,12 +13,15 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDividerModule} from '@angular/material/divider';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 import { EndpointComponent } from './endpoint.component';
 import { ExpansionPanelComponent } from './expansion-panel/expansion-panel.component';
 import { PanelToolbarComponent } from './panel-toolbar/panel-toolbar.component';
 import { EndpointFormComponent } from './endpoint-form/endpoint-form.component';
 import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
+
 
 @NgModule({
   declarations: [EndpointComponent, ExpansionPanelComponent, PanelToolbarComponent, EndpointFormComponent, ModalDialogComponent],
@@ -37,6 +40,7 @@ import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
     MatTooltipModule,
     MatDividerModule,
     MatDialogModule,
+    MatSnackBarModule,
     MatInputModule
   ],
   entryComponents: [ModalDialogComponent]

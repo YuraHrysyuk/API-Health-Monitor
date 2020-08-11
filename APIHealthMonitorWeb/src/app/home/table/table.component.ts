@@ -1,19 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { EndpointDataService } from './../../endpoint/endpoint-data.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-
-export interface DataElement {
-  name: string;
-  createdOn: string;
-  comments: string;
-}
-
-const DATA_ARRAY: DataElement[] = [
-  {name: 'Jhon', createdOn: '07/23/2020', comments: 'Some comment 1'},
-  {name: 'Bob', createdOn: '07/23/2020', comments: 'Some comment 2'},
-  {name: 'Kate', createdOn: '07/23/2020', comments: 'Some comment 3'},
-  {name: 'Alice', createdOn: '07/23/2020', comments: 'Some comment 4'},
-  {name: 'Piter', createdOn: '07/23/2020', comments: 'Some comment 5'}
-];
+import { ScenarioData } from 'src/app/endpoint/scenario';
 
 @Component({
   selector: 'app-table',
@@ -21,16 +9,25 @@ const DATA_ARRAY: DataElement[] = [
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  tableColumns: string[] = ['name', 'createdOn', 'comments', 'arrow'];
+  @Output() editClick = new EventEmitter<boolean>();
+
+  selectedScenario: ScenarioData;
+  tableColumns: string[] = ['name', 'createdOn', 'description', 'controlBar', 'arrow'];
   headers: string[] = ['Name', 'Created On', 'Comments'];
-  dataSource = DATA_ARRAY;
-  constructor(private router: Router) { }
+  dataSource: ScenarioData[];
+  constructor(private router: Router, private data: EndpointDataService) { }
 
   ngOnInit(): void {
+    this.data.getScenarios().subscribe(result => this.dataSource = result as ScenarioData[]);
   }
 
-  redirect(){
-    this.router.navigate(['end-points']);
+  getScenario(index: number) {
+    this.selectedScenario = this.dataSource.find(x => x.id === index);
+    this.editClick.emit();
+  }
+
+  redirect(id: number){
+    this.router.navigate(['end-points', id]);
   }
 
 }

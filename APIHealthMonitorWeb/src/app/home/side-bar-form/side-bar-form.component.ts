@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, Validators, FormBuilder } from '@angular/forms';
+import { ScenarioData } from 'src/app/endpoint/scenario';
 
 @Component({
   selector: 'app-side-bar-form',
@@ -7,6 +8,7 @@ import { FormControl, FormGroup, FormGroupDirective, Validators, FormBuilder } f
   styleUrls: ['./side-bar-form.component.scss']
 })
 export class SideBarFormComponent implements OnInit {
+  @Input() scenario: ScenarioData;
   sideBarFormGroup: FormGroup;
 
   constructor(private fb: FormBuilder) { }

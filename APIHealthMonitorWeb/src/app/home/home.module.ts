@@ -14,6 +14,7 @@ import { TableComponent } from './table/table.component';
 import { HomeComponent } from './home.component';
 import { GridToolbarComponent } from './grid-toolbar/grid-toolbar.component';
 import { SideBarFormComponent } from './side-bar-form/side-bar-form.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [HomeComponent, TableComponent, GridToolbarComponent, SideBarFormComponent],
@@ -26,6 +27,7 @@ import { SideBarFormComponent } from './side-bar-form/side-bar-form.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSlideToggleModule,
     MatIconModule
   ]
 })

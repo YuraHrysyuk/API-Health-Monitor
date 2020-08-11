@@ -10,16 +10,16 @@
             </mat-panel-description>
             <div class="buttonsPanel" (click)="$event.stopPropagation()">
                 <span>Is Enabled:&nbsp;</span><mat-slide-toggle checked="true"></mat-slide-toggle>
-                <button mat-icon-button aria-label="Edit button" (click)="getScenario(scenario)">
+                <button mat-icon-button aria-label="Edit button" (click)="getScenario(scenario.id)">
                     <mat-icon matTooltip="Edit" color="primary">create</mat-icon>
                 </button>
-                <button mat-icon-button aria-label="Delete button">
+                <button mat-icon-button aria-label="Delete button" (click)="deleteScenario(scenario.id)">
                     <mat-icon matTooltip="Delete" color="warn">delete_forever</mat-icon>
                 </button>
             </div>
         </mat-expansion-panel-header>
         <div class="panelContentBlock">
-            <span>Created On: {{scenario.date}}</span>
+            <span>Created On: {{scenario.createdOn | date}}</span>
             <button mat-raised-button color="primary" (click)="runTest(i)">Test Connection</button>
         </div>
         <div class="panelProgressBar hidden">

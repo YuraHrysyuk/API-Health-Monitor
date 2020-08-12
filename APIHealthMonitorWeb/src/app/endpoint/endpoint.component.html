@@ -1,9 +1,9 @@
 <mat-drawer-container>
     <mat-drawer #panelDrawer>
-        <app-endpoint-form [scenario]="scenarios.selectedScenario"></app-endpoint-form>
+        <app-endpoint-form [scenario]="scenarios.selectedEndPoint"></app-endpoint-form>
     </mat-drawer>
     <mat-drawer-content>
-        <app-panel-toolbar (drawerToggleEvent)="panelDrawer.toggle(); scenarios.selectedScenario=null"></app-panel-toolbar>
+        <app-panel-toolbar (drawerToggleEvent)="panelDrawer.toggle(); scenarios.selectedEndPoint=null"></app-panel-toolbar>
         <app-expansion-panel #scenarios (editClick)="panelDrawer.toggle()"></app-expansion-panel>
     </mat-drawer-content>
 </mat-drawer-container>

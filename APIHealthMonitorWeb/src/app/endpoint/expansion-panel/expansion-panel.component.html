@@ -1,25 +1,25 @@
 <mat-accordion>
-    <mat-expansion-panel *ngFor="let scenario of scenarios; index as i" (opened)="panelOpenState = true"
+    <mat-expansion-panel *ngFor="let endpoint of endPoints; index as i" (opened)="panelOpenState = true"
         (closed)="panelOpenState = false">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                {{scenario.name}}
+                {{endpoint.name}}
             </mat-panel-title>
             <mat-panel-description>
-                {{scenario.description}}
+                {{endpoint.description}}
             </mat-panel-description>
             <div class="buttonsPanel" (click)="$event.stopPropagation()">
                 <span>Is Enabled:&nbsp;</span><mat-slide-toggle checked="true"></mat-slide-toggle>
-                <button mat-icon-button aria-label="Edit button" (click)="getScenario(scenario.id)">
+                <button mat-icon-button aria-label="Edit button" (click)="getEndPoint(endpoint.id)">
                     <mat-icon matTooltip="Edit" color="primary">create</mat-icon>
                 </button>
-                <button mat-icon-button aria-label="Delete button" (click)="deleteScenario(scenario)">
+                <button mat-icon-button aria-label="Delete button" (click)="deleteEndPoint(endpoint)">
                     <mat-icon matTooltip="Delete" color="warn">delete_forever</mat-icon>
                 </button>
             </div>
         </mat-expansion-panel-header>
         <div class="panelContentBlock">
-            <span>Created On: {{scenario.createdOn | date}}</span>
+            <span>Created On: {{endpoint.createdOn | date}}</span>
             <button mat-raised-button color="primary" (click)="runTest(i)">Test Connection</button>
         </div>
         <div class="panelProgressBar hidden">

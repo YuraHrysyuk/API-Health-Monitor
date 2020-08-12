@@ -17,32 +17,32 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
   @Output() editClick = new EventEmitter<boolean>();
   @Output() deleteClick = new EventEmitter<string>();
 
-  scenarios: ScenarioData[];
+  endPoints: ScenarioData[];
   scenarioId: number;
-  selectedScenario: ScenarioData;
+  selectedEndPoint: ScenarioData;
   panelOpenState = false;
-  private subscription: Subscription;
-  private subscription2: Subscription;
-  private subscription3: Subscription;
+  private routeParamSubscriber: Subscription;
+  private getDataSubscriber: Subscription;
+  private deleteRequestSubscriber: Subscription;
   constructor(
     public dialog: MatDialog,
     private data: EndpointDataService,
     private activateRoute: ActivatedRoute,
     private matSnackBar: MatSnackBar) {
-    this.subscription = activateRoute.params.subscribe(params => this.scenarioId = params.id);
+    this.routeParamSubscriber = activateRoute.params.subscribe(params => this.scenarioId = params.id);
   }
 
   ngOnInit(): void {
-    this.subscription2 = this.data.getEndPoint(this.scenarioId).subscribe(result => this.scenarios = result as ScenarioData[]);
+    this.getDataSubscriber = this.data.getEndPoint(this.scenarioId).subscribe(result => this.endPoints = result as ScenarioData[]);
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
-    this.subscription = null;
-    this.subscription2.unsubscribe();
-    this.subscription2 = null;
-    this.subscription3.unsubscribe();
-    this.subscription3 = null;
+    this.routeParamSubscriber.unsubscribe();
+    this.routeParamSubscriber = null;
+    this.getDataSubscriber.unsubscribe();
+    this.getDataSubscriber = null;
+    this.deleteRequestSubscriber.unsubscribe();
+    this.deleteRequestSubscriber = null;
   }
 
   openSnackBar(message: string) {
@@ -61,16 +61,16 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
     setTimeout(() => el.classList.add('hidden'), 4000);
   }
 
-  getScenario(id: number) {
-    this.selectedScenario = this.scenarios.find(x => x.id === id);
+  getEndPoint(id: number) {
+    this.selectedEndPoint = this.endPoints.find(x => x.id === id);
     this.editClick.emit();
   }
 
-  deleteScenario(endpoint: ScenarioData) {
+  deleteEndPoint(endpoint: ScenarioData) {
     const dialogRef = this.dialog.open(ModalDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.subscription3 = this.data.deleteEndpoints(endpoint.id)
+        this.deleteRequestSubscriber = this.data.deleteEndpoints(endpoint.id)
           .subscribe(response => {
             this.openSnackBar(`${endpoint.name} - was deleted. Status: ${response.status}`);
           });

@@ -2,11 +2,10 @@ import { EndpointDataService } from './../endpoint-data.service';
 import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ScenarioData } from '../scenario';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ModalDialogComponent } from '../../modal-dialog/modal-dialog.component';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-
 
 @Component({
   selector: 'app-expansion-panel',
@@ -70,10 +69,10 @@ export class ExpansionPanelComponent implements OnInit, OnDestroy {
     const dialogRef = this.dialog.open(ModalDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
-        this.deleteRequestSubscriber = this.data.deleteEndpoints(endpoint.id)
-          .subscribe(response => {
-            this.openSnackBar(`${endpoint.name} - was deleted. Status: ${response.status}`);
-          });
+        this.deleteRequestSubscriber = this.data.deleteEndpoints(endpoint.id).subscribe(
+          response => { this.openSnackBar(`${endpoint.name} - was deleted. Status: ${response.status}`); },
+          error => { console.log(error.message); }
+        );
       }
     });
   }

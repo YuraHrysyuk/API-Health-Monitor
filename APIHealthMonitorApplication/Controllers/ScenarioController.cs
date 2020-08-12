@@ -28,5 +28,12 @@ namespace APIHealthMonitorApplication.Controllers
                 }
             };
         }
+    
+        [HttpDelete]
+        [Route("{scenarioId}")]
+        public IActionResult Delete(int id)
+        {
+            return Ok();
+        }
     }
 }

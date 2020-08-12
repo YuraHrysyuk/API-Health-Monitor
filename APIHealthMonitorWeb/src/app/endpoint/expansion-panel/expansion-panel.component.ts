@@ -1,40 +1,54 @@
 import { EndpointDataService } from './../endpoint-data.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ScenarioData } from '../scenario';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalDialogComponent } from '../modal-dialog/modal-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ModalDialogComponent } from '../../modal-dialog/modal-dialog.component';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-expansion-panel',
   templateUrl: './expansion-panel.component.html',
   styleUrls: ['./expansion-panel.component.scss']
 })
-export class ExpansionPanelComponent implements OnInit {
+export class ExpansionPanelComponent implements OnInit, OnDestroy {
   @Output() editClick = new EventEmitter<boolean>();
   @Output() deleteClick = new EventEmitter<string>();
 
-  scenarios: ScenarioData[];
+  endPoints: ScenarioData[];
   scenarioId: number;
-  selectedScenario: ScenarioData;
+  selectedEndPoint: ScenarioData;
   panelOpenState = false;
-  private subscription: Subscription;
-  constructor(public dialog: MatDialog, private data: EndpointDataService, private activateRoute: ActivatedRoute) {
-    this.subscription = activateRoute.params.subscribe(params => this.scenarioId = params.id);
-   }
-
-  ngOnInit(): void {
-    this.data.getEndPoint(this.scenarioId).subscribe(result => this.scenarios = result as ScenarioData[]);
+  private routeParamSubscriber: Subscription;
+  private getDataSubscriber: Subscription;
+  private deleteRequestSubscriber: Subscription;
+  constructor(
+    public dialog: MatDialog,
+    private data: EndpointDataService,
+    private activateRoute: ActivatedRoute,
+    private matSnackBar: MatSnackBar) {
+    this.routeParamSubscriber = activateRoute.params.subscribe(params => this.scenarioId = params.id);
   }
 
-  openDialog(id: number) {
-    const dialogRef = this.dialog.open(ModalDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      if (result === true) {
-        console.log('deleted');
-      }
+  ngOnInit(): void {
+    this.getDataSubscriber = this.data.getEndPoint(this.scenarioId).subscribe(result => this.endPoints = result as ScenarioData[]);
+  }
+
+  ngOnDestroy() {
+    this.routeParamSubscriber.unsubscribe();
+    this.routeParamSubscriber = null;
+    this.getDataSubscriber.unsubscribe();
+    this.getDataSubscriber = null;
+    this.deleteRequestSubscriber.unsubscribe();
+    this.deleteRequestSubscriber = null;
+  }
+
+  openSnackBar(message: string) {
+    this.matSnackBar.open(message, 'DELETED', {
+      duration: 2000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
     });
   }
 
@@ -46,13 +60,20 @@ export class ExpansionPanelComponent implements OnInit {
     setTimeout(() => el.classList.add('hidden'), 4000);
   }
 
-  getScenario(id: number) {
-    this.selectedScenario = this.scenarios.find(x => x.id === id);
+  getEndPoint(id: number) {
+    this.selectedEndPoint = this.endPoints.find(x => x.id === id);
     this.editClick.emit();
   }
 
-  deleteScenario(id: number) {
-    console.log('Delete function!');
-    this.openDialog(id);
+  deleteEndPoint(endpoint: ScenarioData) {
+    const dialogRef = this.dialog.open(ModalDialogComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.deleteRequestSubscriber = this.data.deleteEndpoints(endpoint.id).subscribe(
+          response => { this.openSnackBar(`${endpoint.name} - was deleted. Status: ${response.status}`); },
+          error => { console.log(error.message); }
+        );
+      }
+    });
   }
 }

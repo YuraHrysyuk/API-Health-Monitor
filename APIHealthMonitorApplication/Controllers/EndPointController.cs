@@ -52,5 +52,12 @@ namespace APIHealthMonitorApplication.Controllers
 
             return endPoints.Where(x => x.ScenarioId == scenarioId);
         }
+
+        [HttpDelete]
+        [Route("end-points/{endPointId}")]
+        public IActionResult Delete(int endPointId)
+        {
+            return Ok();
+        }
     }
 }

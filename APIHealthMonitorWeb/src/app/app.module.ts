@@ -1,3 +1,4 @@
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,11 +20,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AngularHelpComponent } from './angular-help/angular-help.component';
 import { EndpointDataService } from './endpoint/endpoint-data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalDialogComponent } from './modal-dialog/modal-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AngularHelpComponent,
+    ModalDialogComponent,
     NavbarComponent
   ],
   imports: [
@@ -39,8 +42,10 @@ import { HttpClientModule } from '@angular/common/http';
     HomeModule,
     EndpointModule,
     HttpClientModule,
+    MatDialogModule,
     ReactiveFormsModule
   ],
+  entryComponents: [ModalDialogComponent],
   providers: [Title, EndpointDataService],
   bootstrap: [AppComponent]
 })

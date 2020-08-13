@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace APIHealthMonitorApplication.Middleware
+namespace WebApi.Middleware
 {
     public sealed class CustomExceptionMiddleware
     {

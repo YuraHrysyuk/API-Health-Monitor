@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
-namespace APIHealthMonitorApplication.Controllers
+namespace WebApi.Controllers
 {
     [ApiController]
     [Route("[controller]")]

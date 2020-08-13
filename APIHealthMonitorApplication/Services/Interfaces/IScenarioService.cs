@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Services.Interfaces
 {
-    interface IScenarioService
+    public interface IScenarioService
     {
         Task<IEnumerable<Scenario>> GetAllScenarios();
     }

@@ -1,6 +1,9 @@
 ﻿using DataAccess.Models;
 using Microsoft.AspNetCore.Mvc;
+using Services;
+using Services.Interfaces;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
@@ -8,26 +11,31 @@ namespace WebApi.Controllers
     [Route("[controller]")]
     public class ScenarioController : Controller
     {
+        IScenarioService _scenarioService;
+
+        public ScenarioController(IScenarioService scenarioService) {
+            _scenarioService = scenarioService;
+        }
+
         [HttpGet]
-        public IEnumerable<Scenario> Get()
+        public async Task<IEnumerable<Scenario>> Get()
         {
-            return new List<Scenario>() {
-                new Scenario() { 
-                    Id = 1,
-                    Name = "First Test Group",
-                    Description = "Some Long Description Here 1"
-                },
-                new Scenario() {
-                    Id = 2,
-                    Name = "Second Test Group",
-                    Description = "Some Long Description Here 2"
-                },
-                new Scenario() {
-                    Id = 3,
-                    Name = "Third Test Group",
-                    Description = "Some Long Description Here 3"
-                }
-            };
+            var dbScenarios = await _scenarioService.GetAllScenarios();
+
+            var listOfScenarios = new List<Scenario>();
+
+            foreach (var scenario in dbScenarios) {
+                var mappedScenario = new Scenario();
+
+                mappedScenario.Id = scenario.Id;
+                mappedScenario.Name = scenario.Name;
+                mappedScenario.Description = scenario.Description;
+                mappedScenario.CreatedOn = scenario.CreatedOn;
+
+                listOfScenarios.Add(mappedScenario);
+            }
+
+            return listOfScenarios;
         }
     }
 }

@@ -1,21 +1,15 @@
-using System;
-using System.Reflection;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using WebApi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using DataAccess.Repositories;
+using Services.Interfaces;
+using Services;
 using Microsoft.EntityFrameworkCore;
-
+using DataAccess.Contexts;
 
 namespace WebApi
 {
@@ -45,6 +39,10 @@ namespace WebApi
 
             services.AddControllers();
             services.AddCors();
+            
+            services.AddScoped<IScenarioRepository, ScenarioRepository>();
+            services.AddScoped<IEndPointRepository, EndPointRepository>();
+            services.AddScoped<IScenarioService, ScenarioService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

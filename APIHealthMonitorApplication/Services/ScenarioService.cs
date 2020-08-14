@@ -1,17 +1,23 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using BusinessEntity;
+using DataAccess.Repositories;
+using Services.Interfaces;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace APIHealthMonitorApplication.Controllers
+namespace Services
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class ScenarioController : Controller
+    public class ScenarioService: IScenarioService
     {
-        [HttpGet]
-        public IEnumerable<Scenario> Get()
+        private IScenarioRepository _scenarioRepository;
+
+        public ScenarioService(IScenarioRepository scenarioRepository)
         {
+            _scenarioRepository = scenarioRepository;
+        }
+
+        public async Task<IEnumerable<Scenario>> GetAllScenarios() {
             return new List<Scenario>() {
-                new Scenario() { 
+                new Scenario() {
                     Id = 1,
                     Name = "First Test Group",
                     Description = "Some Long Description Here 1"

@@ -1,23 +1,13 @@
-using System;
-using System.Reflection;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using APIHealthMonitorApplication.Middleware;
+using WebApi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Microsoft.EntityFrameworkCore;
+using WebApi.ConfigureServicesExtensions;
 
-
-namespace APIHealthMonitorApplication
+namespace WebApi
 {
     public class Startup
     {
@@ -33,6 +23,10 @@ namespace APIHealthMonitorApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
+            services.AddControllers();
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -43,21 +37,18 @@ namespace APIHealthMonitorApplication
                 });
             });
 
-            services.AddControllers();
-            services.AddCors();
+            services.ExtendWithAppServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
+            //app.UseHttpsRedirection(); //Uncomment this for https requests enabling
+            app.UseRouting();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{AppName} V1");
+            app.UseCors(builder => {
+                builder.AllowAnyOrigin().AllowAnyHeader()
+                              .AllowAnyMethod();
             });
 
             if (env.IsDevelopment())
@@ -67,17 +58,21 @@ namespace APIHealthMonitorApplication
 
             app.UseMiddleware<CustomExceptionMiddleware>();//This middleware was added for Custom global exception handling. Technically, we can add here many custom handlers.
 
-            //app.UseHttpsRedirection(); //Uncomment this for https requests enabling
-
-            app.UseRouting();
-            
-            app.UseCors(builder => builder.AllowAnyOrigin());
-
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", $"{AppName} V1");
             });
         }
     }

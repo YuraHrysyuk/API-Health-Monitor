@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using BusinessEntity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace APIHealthMonitorApplication.Controllers
+namespace WebApi.Controllers
 {
     [ApiController]
     public class EndPointController : ControllerBase

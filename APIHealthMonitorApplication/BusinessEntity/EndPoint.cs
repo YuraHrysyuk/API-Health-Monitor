@@ -1,12 +1,16 @@
 ﻿using System;
 
-namespace APIHealthMonitorApplication
+namespace BusinessEntity
 {
-    public class Scenario
+    public class EndPoint
     {
         public int Id { get; set; }
 
+        public int ScenarioId { get; set; }
+
         public string Name { get; set; }
+
+        public string ConnectionPath { get; set; }
 
         public string Description { get; set; }
 

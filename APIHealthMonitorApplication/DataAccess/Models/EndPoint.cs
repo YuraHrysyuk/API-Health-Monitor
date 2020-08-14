@@ -1,12 +1,10 @@
 ﻿using System;
 
-namespace APIHealthMonitorApplication
+namespace DataAccess.Models
 {
-    public class EndPoint
+    public class EndPointDb
     {
         public int Id { get; set; }
-
-        public int ScenarioId { get; set; }
 
         public string Name { get; set; }
 
@@ -14,6 +12,10 @@ namespace APIHealthMonitorApplication
 
         public string Description { get; set; }
 
-        public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public DateTime CreatedOn { get; set; }
+
+        public int? ScenarioId { get; set; }
+
+        public Scenario Scenario { get; set; }
     }
 }

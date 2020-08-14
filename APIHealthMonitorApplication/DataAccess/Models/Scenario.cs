@@ -13,11 +13,11 @@ namespace DataAccess.Models
 
         public DateTime CreatedOn { get; set; }
 
-        public ICollection<EndPoint> EndPoints { get; set; }
+        public ICollection<EndPointDb> EndPoints { get; set; }
 
         public Scenario()
         {
-            EndPoints = new List<EndPoint>();
+            EndPoints = new List<EndPointDb>();
         }
     }
 }

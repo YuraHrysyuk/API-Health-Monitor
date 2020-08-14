@@ -7,7 +7,7 @@ namespace DataAccess.Contexts
     {
         public DbSet<Scenario> Scenarios { get; set; }
 
-        public DbSet<EndPoint> EndPoints { get; set; }
+        public DbSet<EndPointDb> EndPoints { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

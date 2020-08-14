@@ -2,7 +2,7 @@
 
 namespace DataAccess.Repositories
 {
-    public interface IEndPointRepository : IRepositoryBase<EndPoint>
+    public interface IEndPointRepository : IRepositoryBase<EndPointDb>
     {
     }
 }

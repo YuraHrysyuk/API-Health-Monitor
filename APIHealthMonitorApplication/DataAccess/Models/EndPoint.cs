@@ -2,7 +2,7 @@
 
 namespace DataAccess.Models
 {
-    public class EndPoint
+    public class EndPointDb
     {
         public int Id { get; set; }
 

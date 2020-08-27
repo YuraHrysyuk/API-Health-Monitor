@@ -18,7 +18,7 @@ namespace WebApi.ConfigureServicesExtensions
 
             services.AddTransient(provider =>
             {
-                IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(@Directory.GetCurrentDirectory() + "\\appsettings.json").Build();
+                IConfigurationRoot configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile(@Directory.GetCurrentDirectory() + "/appsettings.json").Build();
                 var builder = new DbContextOptionsBuilder<ApplicationDbContext>();
                 var connectionString = configuration.GetConnectionString("DatabaseConnection");
                 builder.UseSqlServer(connectionString);

@@ -1,8 +1,8 @@
-﻿using DataAccess.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BusinessEntity;
 
 namespace WebApi.Controllers
 {
@@ -10,7 +10,7 @@ namespace WebApi.Controllers
     public class ScenarioController : Controller
     {
         IScenarioService _scenarioService;
-
+        
         public ScenarioController(IScenarioService scenarioService)
         {
             _scenarioService = scenarioService;
@@ -37,6 +37,23 @@ namespace WebApi.Controllers
             }
 
             return listOfScenarios;
+        }
+
+
+        [HttpPost]
+        [Route("scenario")]
+        public IActionResult Post(Scenario s)
+        {
+            _scenarioService.CreateScenario(s);
+            return Ok(s);
+        }
+
+        [HttpDelete]
+        [Route("scenario/{Id}")]
+        public IActionResult Delete(int Id)
+        {
+            _scenarioService.DeleteScenario(Id);
+            return Ok();
         }
     }
 }

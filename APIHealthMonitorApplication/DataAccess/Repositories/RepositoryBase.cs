@@ -20,6 +20,11 @@ namespace DataAccess.Repositories
             return this.ApplicationDbContext.Set<T>().AsNoTracking();
         }
 
+        public IQueryable<T> FindById()
+        {
+            return this.ApplicationDbContext.Set<T>().AsNoTracking();
+        }
+
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
             return this.ApplicationDbContext.Set<T>().Where(expression).AsNoTracking();
@@ -28,16 +33,19 @@ namespace DataAccess.Repositories
         public void Create(T entity)
         {
             this.ApplicationDbContext.Set<T>().Add(entity);
+            this.ApplicationDbContext.SaveChanges();
         }
 
         public void Update(T entity)
         {
             this.ApplicationDbContext.Set<T>().Update(entity);
+            this.ApplicationDbContext.SaveChanges();
         }
 
         public void Delete(T entity)
         {
             this.ApplicationDbContext.Set<T>().Remove(entity);
+            this.ApplicationDbContext.SaveChanges();
         }
     }
 }

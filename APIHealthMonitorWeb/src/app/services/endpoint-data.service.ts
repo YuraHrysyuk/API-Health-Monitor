@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { ScenarioData } from 'src/app/endpoint/scenario';
+import { ScenarioData } from 'src/app/shared/scenario';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -16,5 +16,8 @@ export class EndpointDataService {
   }
   getEndPoint(id: number) {
     return this.http.get(this.endpointsURL + `/${id}/end-points`);
+  }
+  deleteEndpoints(id: number) {
+    return this.http.delete(this.URL + `/end-points/${id}`, { observe: 'response' });
   }
 }

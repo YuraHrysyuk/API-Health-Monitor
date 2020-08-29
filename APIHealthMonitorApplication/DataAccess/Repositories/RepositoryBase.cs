@@ -3,6 +3,8 @@ using System.Linq;
 using DataAccess.Contexts;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace DataAccess.Repositories
 {
@@ -19,6 +21,11 @@ namespace DataAccess.Repositories
         {
             return this.ApplicationDbContext.Set<T>().AsNoTracking();
         }
+
+        //public async Task<List<T>> FindAllAsync()
+        //{
+        //    return await this.ApplicationDbContext.Set<T>().AsNoTracking().ToListAsync();
+        //}
 
         public IQueryable<T> FindById()
         {

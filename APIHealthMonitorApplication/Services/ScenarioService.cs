@@ -73,6 +73,20 @@ namespace Services
             _scenarioRepository.Create(s);
         }
 
+        //Update scenario in DB
+        public void UpdateScenario(Scenario scenario)
+        {
+            var s = new DataAccess.Models.Scenario()
+            {
+                Id = scenario.Id,
+                Name = scenario.Name,
+                Description = scenario.Description,
+                CreatedOn = scenario.CreatedOn
+
+            };
+            _scenarioRepository.Update(s);
+        }
+
         //Delete scenario
         public void DeleteScenario(int id)
         {

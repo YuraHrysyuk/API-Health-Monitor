@@ -55,5 +55,13 @@ namespace WebApi.Controllers
             _scenarioService.DeleteScenario(Id);
             return Ok();
         }
+
+        [HttpPut]
+        [Route("scenario")]
+        public IActionResult Update(Scenario s)
+        {
+            _scenarioService.UpdateScenario(s);
+            return Ok();
+        }
     }
 }

@@ -27,9 +27,14 @@ namespace DataAccess.Repositories
         //    return await this.ApplicationDbContext.Set<T>().AsNoTracking().ToListAsync();
         //}
 
-        public IQueryable<T> FindById()
+        //public IQueryable<T> FindById()
+        //{
+        //    return this.ApplicationDbContext.Set<T>().AsNoTracking();
+        //}
+
+        public async Task<T> FindByIdAsync(int id)
         {
-            return this.ApplicationDbContext.Set<T>().AsNoTracking();
+            return await this.ApplicationDbContext.Set<T>().FindAsync(id);
         }
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)

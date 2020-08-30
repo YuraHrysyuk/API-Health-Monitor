@@ -59,6 +59,18 @@ namespace Services
                     CreatedOn = scenario.CreatedOn
                 });
         }
+        //Get Scenario byId
+        public async Task<Scenario> GetById(int id)
+        {
+            var scenario = await _scenarioRepository.FindByIdAsync(id);
+            return new Scenario
+            {
+                Id = scenario.Id,
+                Name = scenario.Name,
+                Description = scenario.Description,
+                CreatedOn = scenario.CreatedOn
+            };
+        }
 
         //Add new scenario to DB
         public void CreateScenario(Scenario scenario)

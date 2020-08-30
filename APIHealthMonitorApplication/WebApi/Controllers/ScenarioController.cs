@@ -15,7 +15,7 @@ namespace WebApi.Controllers
         {
             _scenarioService = scenarioService;
         }
-
+        
         [HttpGet]
         [Route("scenario")]
         public async Task<IEnumerable<Scenario>> Get()
@@ -39,6 +39,12 @@ namespace WebApi.Controllers
             return listOfScenarios;
         }
 
+        [HttpGet]
+        [Route("scenario/{id}")]
+        public async Task<Scenario> GetById(int id)
+        {
+            return await _scenarioService.GetById(id);
+        }
 
         [HttpPost]
         [Route("scenario")]

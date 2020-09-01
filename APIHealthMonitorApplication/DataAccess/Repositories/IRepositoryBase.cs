@@ -10,8 +10,8 @@ namespace DataAccess.Repositories
         IQueryable<T> FindAll();
         Task<T> FindByIdAsync(int id);
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
-        void Create(T entity);
-        void Update(T entity);
-        void Delete(T entity);
+        Task Create(T entity);
+        Task Update(T entity);
+        Task<T> Delete(T entity);
     }
 }

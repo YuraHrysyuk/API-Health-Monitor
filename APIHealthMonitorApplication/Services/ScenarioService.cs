@@ -73,7 +73,7 @@ namespace Services
         }
 
         //Add new scenario to DB
-        public void CreateScenario(Scenario scenario)
+        public async Task CreateScenario(Scenario scenario)
         {
             var s = new DataAccess.Models.Scenario()
             {
@@ -82,11 +82,11 @@ namespace Services
                 CreatedOn = scenario.CreatedOn
 
             };
-            _scenarioRepository.Create(s);
+            await _scenarioRepository.Create(s);
         }
 
         //Update scenario in DB
-        public void UpdateScenario(Scenario scenario)
+        public async Task UpdateScenario(Scenario scenario)
         {
             var s = new DataAccess.Models.Scenario()
             {
@@ -96,14 +96,22 @@ namespace Services
                 CreatedOn = scenario.CreatedOn
 
             };
-            _scenarioRepository.Update(s);
+            await _scenarioRepository.Update(s);
         }
 
         //Delete scenario
-        public void DeleteScenario(int id)
+        public async Task<Scenario> DeleteScenario(int id)
         {
             var scen = _scenarioRepository.FindAll().Where(x => x.Id == id).First();         
-            _scenarioRepository.Delete(scen);
+            var deletedScenario = await _scenarioRepository.Delete(scen);
+            return new Scenario
+            {
+                Id = deletedScenario.Id,
+                Name = deletedScenario.Name,
+                Description = deletedScenario.Description,
+                CreatedOn = deletedScenario.CreatedOn
+
+            };
         }
     }
 }

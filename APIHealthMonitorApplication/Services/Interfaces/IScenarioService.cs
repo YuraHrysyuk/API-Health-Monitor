@@ -8,8 +8,8 @@ namespace Services.Interfaces
     {
         Task<IEnumerable<Scenario>> GetAllScenarios();
         Task<Scenario> GetById(int id);
-        void CreateScenario(Scenario scenario);
-        void UpdateScenario(Scenario scenario);
-        void DeleteScenario(int Id);
+        Task CreateScenario(Scenario scenario);
+        Task UpdateScenario(Scenario scenario);
+        Task<Scenario> DeleteScenario(int Id);
     }
 }

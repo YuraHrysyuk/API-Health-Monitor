@@ -42,22 +42,24 @@ namespace DataAccess.Repositories
             return this.ApplicationDbContext.Set<T>().Where(expression).AsNoTracking();
         }
 
-        public void Create(T entity)
+        public async Task Create(T entity)
         {
             this.ApplicationDbContext.Set<T>().Add(entity);
-            this.ApplicationDbContext.SaveChanges();
+            await this.ApplicationDbContext.SaveChangesAsync();
         }
 
-        public void Update(T entity)
+        public async Task Update(T entity)
         {
             this.ApplicationDbContext.Set<T>().Update(entity);
-            this.ApplicationDbContext.SaveChanges();
+            await this.ApplicationDbContext.SaveChangesAsync();
+            //return entity;
         }
 
-        public void Delete(T entity)
+        public async Task<T> Delete(T entity)
         {
             this.ApplicationDbContext.Set<T>().Remove(entity);
-            this.ApplicationDbContext.SaveChanges();
+            await this.ApplicationDbContext.SaveChangesAsync();
+            return entity;
         }
     }
 }

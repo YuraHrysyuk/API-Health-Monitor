@@ -48,26 +48,26 @@ namespace WebApi.Controllers
 
         [HttpPost]
         [Route("scenario")]
-        public IActionResult Post(Scenario s)
+        public async Task<ActionResult<Scenario>> Post(Scenario s)
         {
-            _scenarioService.CreateScenario(s);
-            return Ok(s);
+            await _scenarioService.CreateScenario(s);
+            return CreatedAtAction("GetById", new { Id = s.Id }, s);
         }
 
         [HttpDelete]
         [Route("scenario/{Id}")]
-        public IActionResult Delete(int Id)
+        public async Task<ActionResult<Scenario>> Delete(int Id)
         {
-            _scenarioService.DeleteScenario(Id);
-            return Ok();
+            var deletedData = await _scenarioService.DeleteScenario(Id);
+            return Ok(deletedData);
         }
 
         [HttpPut]
         [Route("scenario")]
-        public IActionResult Update(Scenario s)
+        public async Task<IActionResult> Update(Scenario s)
         {
-            _scenarioService.UpdateScenario(s);
-            return Ok();
+            await _scenarioService.UpdateScenario(s);
+            return NoContent();
         }
     }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Validators, FormGroup, FormBuilder, FormGroupDirective } from '@angular/forms';
-import { ScenarioData } from '../scenario';
+import { ScenarioData } from 'src/app/shared/scenario';
 
 @Component({
   selector: 'app-endpoint-form',
